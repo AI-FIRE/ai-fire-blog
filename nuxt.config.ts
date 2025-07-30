@@ -7,10 +7,10 @@ import prismjs from 'vite-plugin-prismjs'
 export default defineNuxtConfig({
   app: {
     head: {
-      title: '开源博客 - helloworld',
+      title: '智心一梦',
       meta: [
-        { name: 'keywords', content: '开源博客,helloworld' },
-        { name: 'description', content: '开源博客 - helloworld' }
+        { name: 'keywords', content: '智心一梦 ai-nous' },
+        { name: 'description', content: '智心一梦 ai-nous' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -92,7 +92,7 @@ export default defineNuxtConfig({
         ]
       })
     ],
-    // @ts-expect-error: Missing ssr key
+// 移除未使用的 @ts-expect-error 指令
     ssr: {
       noExternal: ['compute-scroll-into-view', 'ant-design-vue']
     }
@@ -101,7 +101,17 @@ export default defineNuxtConfig({
     public: {
       BASE_URL: process.env.BASE_URL + '/api',
     }
-  }
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://60.205.182.150:29090',
+        // target: 'http://localhost:29090',
+        changeOrigin: true,
+        rewrite: (path: any) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   // autoImports: {
   //   global: false //關掉的話更新跑的比較快
   // },

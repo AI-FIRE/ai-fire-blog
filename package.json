@@ -2,8 +2,9 @@
   "private": true,
   "scripts": {
     "local": "cross-env BASE_URL=http://localhost:29090 nuxi dev",
-    "dev": "cross-env BASE_URL=https://test-blog.helloworld.net nuxi dev",
-    "build": "cross-env BASE_URL=https://flygoose-blog.helloworld.net nuxi build",
+    "dev": "cross-env BASE_URL=http://localhost:3000/api nuxi dev",
+    "build": "cross-env BASE_URL=http://60.205.182.150 nuxi build",
+    "build:local": "cross-env BASE_URL=http://localhost:29090 nuxi build",
     "build_test": "cross-env BASE_URL=https://test-blog.helloworld.net nuxi build",
     "start": "node .output/server/index.mjs",
     "allupdate": "yarn upgrade-interactive",

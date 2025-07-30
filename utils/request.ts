@@ -65,6 +65,7 @@ const defaultOption = {
     Authorization: '',
     token: '',
     // ts: (+new Date() / 1000) | 0,
+    'Content-Type': 'application/json',
     // sign: '',
     // 'Content-Type': 'application/x-www-form-urlencoded',
     // deviceType: 'pc'
