@@ -10,7 +10,9 @@ export default defineNuxtConfig({
       title: '智心一梦',
       meta: [
         { name: 'keywords', content: '智心一梦 ai-nous' },
-        { name: 'description', content: '智心一梦 ai-nous' }
+        { name: 'description', content: '智心一梦 ai-nous' },
+        { name: 'baidu-site-verification', content: 'codeva-eIhlB28TVw' },
+         { name: 'msvalidate.01', content: 'FB0B6BA42846ACD8ABD4D9FEF13DA3D0' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -42,6 +44,7 @@ export default defineNuxtConfig({
   },
   vite: {
     logLevel: 'info',
+    sourcemap: false, // 禁用sourcemap以避免警告
     optimizeDeps: {
       include: ['vue', 'pinia', 'ufo']
     },
@@ -105,8 +108,8 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://60.205.182.150:29090',
-        // target: 'http://localhost:29090',
+        // target: 'http://60.205.182.150:29090',
+        target: 'http://localhost:29090',
         changeOrigin: true,
         rewrite: (path: any) => path.replace(/^\/api/, '')
       }

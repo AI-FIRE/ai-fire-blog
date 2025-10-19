@@ -28,7 +28,7 @@ const menus = ref<Record<string, string>[]>([
   {
     icon: 'icon-home',
     name: '首页',
-    url: '/'
+    url: '/home'
   },
   {
     icon: 'icon-blog',
