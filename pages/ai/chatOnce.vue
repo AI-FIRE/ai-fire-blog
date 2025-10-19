@@ -41,7 +41,7 @@
         <div class="char-count">{{ userInput.length }}/1000</div>
         <!-- 快捷问题按钮 -->
         <div class="quick-questions">
-          <button @click="handleFirstHandshake" class="quick-question-button">
+          <button @click="handleFirstHandshake" class="quick-question-button first-handshake-button">
             第一次握手
           </button>
           <button 
@@ -128,9 +128,13 @@ const handleSend = async () => {
   try {
     // 调用AI接口获取流式回答
     await getStreamingAnswer(input)
-  } catch (error) {
+  } catch (error: any) {
     console.error('AI接口调用失败:', error)
-    aiAnswer.value = '抱歉，我现在暂时无法为您提供回答，请稍后再试。'
+    if(error.message!=undefined){
+      aiAnswer.value = error.message
+    }else{
+      aiAnswer.value = '抱歉，我现在暂时无法为您提供回答，请稍后再试。'
+    }
   } finally {
     isStreaming.value = false
   }
@@ -332,17 +336,31 @@ const validateAndSubmit = () => {
   }
   
   .quick-question-button {
-    padding: 6px 12px; /* 减小按钮大小 */
-    border: 1px solid #52c41a; /* 科技绿色边框 */
-    border-radius: 16px; /* 减小圆角 */
-    background: #f6ffed; /* 科技绿色背景 */
-    color: #52c41a; /* 科技绿色文字 */
-    font-size: 12px; /* 减小字体大小 */
-    cursor: pointer;
-    transition: all 0.3s;
-    white-space: nowrap;
-    position: relative;
-    overflow: hidden;
+      padding: 6px 12px; /* 减小按钮大小 */
+      border: 1px solid #52c41a; /* 科技绿色边框 */
+      border-radius: 16px; /* 减小圆角 */
+      background: #f6ffed; /* 科技绿色背景 */
+      color: #52c41a; /* 科技绿色文字 */
+      font-size: 12px; /* 减小字体大小 */
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      
+      /* 第一次握手按钮特殊样式 */
+      &.first-handshake-button {
+        border: 1px solid #ff7a45; /* 橘黄色边框 */
+        background: #fff7e6; /* 橘黄色背景 */
+        color: #ff7a45; /* 橘黄色文字 */
+        
+        &:hover {
+          background: linear-gradient(135deg, #ff7a45, #ffac38); /* 橘黄色渐变 */
+          border-color: #ff7a45;
+          color: #fff;
+          box-shadow: 0 2px 8px rgba(255, 122, 69, 0.3);
+        }
+      }
     
     &:hover {
       background: linear-gradient(135deg, #52c41a, #73d13d); /* 科技绿色渐变 */
