@@ -63,7 +63,6 @@
         <i class="iconfont icon-send"></i>
       </button>
     </div>
-    
     <!-- 回答模式 -->
     <div v-else-if="mode === 'answer'" class="mode-container">
       

@@ -11,6 +11,7 @@ import { useCookie } from '#app'
 export const getUuid = () => {
   const Uuid = useCookie('hw_uuid')
   return Uuid.value
+  
 }
 
 // 设置 Uuid
